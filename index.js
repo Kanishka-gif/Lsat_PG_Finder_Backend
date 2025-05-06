@@ -4,9 +4,13 @@ const routes = require("./routes");
 const cors = require("cors");
 const express = require("express");
 const userRoutes = require('./routes/api/user.route'); 
+const mailRoute = require("./routes/api/mail.route");
+const contactRoutes = require("./routes/api/contact.route");
+const pgRoutes=require("./routes/api/pg.route")
 const backend = express();
 
-backend.use(express.json());
+
+
 
 
 
@@ -17,12 +21,21 @@ backend.use(cors({
 })
 );
 
+backend.use(express.json());
+
+
 
 
 
 // routing 3
 backend.use(routes);
 backend.use("/api/auth/users", userRoutes);
+backend.use("/api/auth", mailRoute);
+backend.use("/api/contact", contactRoutes);
+backend.use('/api/pgs', pgRoutes);
+backend.use("/uploads", express.static("uploads"));
+
+
 
 
 
