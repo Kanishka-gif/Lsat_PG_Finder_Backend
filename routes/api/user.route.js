@@ -7,9 +7,13 @@ const {
   addUser,
 } = require("../../controllers/auth/users");
 
+
 router.get("/", getAllUsers);
 router.post("/", addUser);
 router.delete("/:id", deleteUser);
-router.put("/:id", updateUser); 
+router.put("/:id", updateUser);
+
+
+
 
 module.exports = router;
